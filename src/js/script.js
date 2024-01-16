@@ -16,7 +16,6 @@ for (let i = 0; arrNum.length < 100; i++) {
     }
     console.log(randomNumber);
 }
-
 console.log(`Yor random number: ${getRandomNum()}`)
 
 
