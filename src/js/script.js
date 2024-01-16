@@ -3,9 +3,8 @@
 const userNumber = +prompt('Write your number: ');
 let divider = 0;
 
-if (userNumber <=1 ){
-    console.log(NaN);
-}else
+if (typeof userNumber !== 'number') throw new Error(`you entered the wrong number`);
+if (userNumber <= 1) console.log(NaN);
 
     for (let i = 2; i <= userNumber; i++) {
 
