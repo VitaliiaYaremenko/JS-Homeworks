@@ -3,7 +3,7 @@
 function padString (string, length, symbol = '*', sideRight = true) {
 
   if (typeof string !== 'string') throw new Error('Passed value is not a string');
-  if (typeof length !== 'number' &&  Number.isNaN(length)) throw new Error(`The transferred value is not a number`);
+  if (typeof length !== 'number' ||  Number.isNaN(length)) throw new Error(`The transferred value is not a number`);
 
   if (string.length === length) return string;
   if (string.length > length) return string.slice(0, length);
