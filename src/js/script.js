@@ -1,22 +1,19 @@
 'use strict';
 
 const getRandomNum = function () {
+const arr = [];
 
-    return Math.floor(Math.random() * 101);
-}
+while (arr.length < 100 ) {
 
-const arrNum = [];
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    if (arr.indexOf(randomNumber) === -1) arr.push(randomNumber);
+  }
+ return arr;
 
-for (let i = 0; arrNum.length < 100; i++) {
-
-    const randomNumber = getRandomNum();
-
-    if(!arrNum.includes(randomNumber)) {
-        arrNum.push(arrNum[randomNumber]);
-    }
-    console.log(randomNumber);
 }
 console.log(`Yor random number: ${getRandomNum()}`)
+
+
 
 
 
