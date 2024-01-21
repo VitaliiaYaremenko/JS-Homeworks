@@ -1,16 +1,17 @@
 'use strict';
 
-const age = +prompt('Напишіть скільки вам років: ');
-
 const showUserAge = function () {
+    const getUserAge = +prompt('Напишіть скільки вам років: ');
 
-    if (typeof age !== 'number' || Number.isNaN(age) || age === 0) throw new Error('Невірно вказане значення');
+    if (typeof getUserAge !== 'number' || Number.isNaN(getUserAge) || getUserAge === 0) throw new Error('Невірно вказане значення');
 
-    const years = [1, 21, 31, 41, 51, 61, 71, 81, 91, 101];
-      for (let i = 0; i < years.length; i++) {
-      if (years[i] === age) return  `Тобі ${age} - рік!`;
-  }
-    if (age %10 ===2 && age !==12 || age %10 ===3 && age !==9 && age !==13 || age %10 ===4 && age !==14 ) return `Тобі ${age} - роки`;
-     return `Тобі ${age} - років`;
+       if (getUserAge % 10 === 1 && getUserAge % 100 !== 11 ) {
+            return `Тобі ${getUserAge} - рік`;
+        } else if (getUserAge % 10 >= 2 && getUserAge % 10 <= 4 && getUserAge % 100 !== 12 && getUserAge % 100 !== 13 && getUserAge % 100 !== 14){
+            return `Тобі ${getUserAge} - роки`;
+        } else {
+           return   `Тобі ${getUserAge} - років`;
+       }
+
 }
 alert(showUserAge());
