@@ -1,0 +1,12 @@
+
+node_modules/
+dist/
+*.min.js
+build/
+*.log
+*.tmp
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+jspm_packages/
