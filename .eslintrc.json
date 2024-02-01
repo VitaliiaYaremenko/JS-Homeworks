@@ -13,6 +13,7 @@
         "func-names": ["error", "never"],
         "camelcase": ["error", { "allow": ["^你好_"] }],
         "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
-        "no-labels": "off"
+        "no-labels": "off",
+        "linebreak-style": ["error", "windows"]
     }
 }
