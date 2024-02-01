@@ -1,38 +1,75 @@
-const createCandidate = function (name, skills) {
+const skillsRequirements = ['HTML', 'CSS', 'SCSS', 'Java Script', 'React', 'Angular'];
+
+const skillCandidate1 = ['HTML', 'CSS', 'Java Script'];
+const skillCandidate2 = ['HTML', 'CSS', 'SCSS', 'Java Script', 'React'];
+const skillCandidate3 = ['HTML', 'CSS', 'SCSS', 'Java Script', 'React', 'Angular', 'Node.JS'];
+// _______________________________________________________________
+
+const createСandidate = function (name = 'Write name candidate', skills = []) {
   return {
     name,
     skills,
   };
 };
 
-// _____________________________________________________
-const requirements = [];
-const addRequirement = function (requirement) {
-  requirements.push(requirement);
-  return requirements;
+const candidate1 = createСandidate('Nick', skillCandidate1);
+const candidate2 = createСandidate('Mary', skillCandidate2);
+const candidate3 = createСandidate('Alex', skillCandidate3);
+
+const candidatesItem = [candidate1, candidate2, candidate3];
+
+// _______________________________________________________________
+
+const addRequirement = function (skill, newRequirement) {
+  newRequirement.push(skill);
+};
+addRequirement('Node.JS', skillsRequirements);
+
+// _______________________________________________________________
+
+const conductInterview = function (candidate, requirements) {
+  let result = false;
+
+  for (let i = 0; i < requirements.length; i += 1) {
+    if (requirements[i] !== candidate.skills[i]) return result;
+  }
+  result = true;
+  return result;
 };
 
-addRequirement('JavaScript');
-addRequirement('React');
-addRequirement('CSS');
-addRequirement('HTML');
+console.log(conductInterview(candidate1, skillsRequirements));
+console.log(conductInterview(candidate2, skillsRequirements));
+console.log(conductInterview(candidate3, skillsRequirements));
+// _______________________________________________________________
 
-const candidate1 = createCandidate('Nikita', 'CSS, HTML, JavaScript');
-const candidate2 = createCandidate('Anna', 'CSS, HTML, JavaScript, React');
-const candidate3 = createCandidate('Alex', 'HTML, CSS');
+const evaluationFunction = function (candidate, requirement) {
+  let score = 0;
 
-const listСandidates = [candidate1, candidate2, candidate3];
-// _____________________________________________________
-const conductInterview = function (candidate, requirements) {
-  for (const requirement of requirements) {
-    if (!candidate.skills.includes(requirement)) {
-      return false;
+  for (let i = 0; i < requirement.length; i += 1) {
+    if (requirement[i] === candidate.skills[i]) {
+      score = 100;
+    } else {
+      const differenceScore = (requirement.length - candidate.skills.length) * 10;
+      score = 100 - differenceScore;
     }
   }
-  return true;
+  return score;
 };
-// _____________________________________________________
-const evaluateCandidate = function (candidate) {
-  const score = candidate.skills.length * 20;
-  return score > 100 ? 100 : score;
+console.log(evaluationFunction(candidate1, skillsRequirements));
+console.log(evaluationFunction(candidate2, skillsRequirements));
+console.log(evaluationFunction(candidate3, skillsRequirements));
+// _______________________________________________________________
+
+const scheduleInterview = function (candidates, requirements, scoreFun) {
+  const result = [];
+
+  for (let i = 0; i < candidates.length; i += 1) {
+    scoreFun(candidates[i], requirements);
+    result.push({
+      score: scoreFun(candidates[i], requirements),
+      candidate: candidates[i],
+    });
+  }
+  return result;
 };
+console.log(scheduleInterview(candidatesItem, skillsRequirements, evaluationFunction));

@@ -12,6 +12,7 @@
         "quotes": ["error", "single"],
         "func-names": ["error", "never"],
         "camelcase": ["error", { "allow": ["^你好_"] }],
-        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+        "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+        "no-labels": "off"
     }
 }
