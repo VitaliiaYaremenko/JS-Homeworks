@@ -11,6 +11,7 @@
         "func-style": ["error", "expression"],
         "quotes": ["error", "single"],
         "func-names": ["error", "never"],
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "eqeqeq": "off"
     }
 }
