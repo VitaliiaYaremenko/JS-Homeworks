@@ -9,8 +9,8 @@ const printName = function (prefix) {
 
 const myApply = function (func, context, argsArray) {
   context.printName = func;
-  context.printName(argsArray);
+  context.printName(argsArray, ...argsArray);
   delete context.printName;
 };
 
-myApply(printName, userData, 'Mr');
+myApply(printName, userData, ['Mr']);
